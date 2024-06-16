@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home component should render 1`] = `
+<DocumentFragment>
+  <main>
+    <form>
+      <input
+        placeholder="Enter title"
+        type="text"
+        value=""
+      />
+      <button
+        type="submit"
+      >
+        Save
+      </button>
+    </form>
+  </main>
+</DocumentFragment>
+`;

@@ -2,6 +2,7 @@ import React from 'react';
 "use client";
 
 import { FormEvent, useState } from "react";
+import axios from 'axios';
 
 export default function Home() {
   const [isSuccess, setIsSuccess] = useState(false);
@@ -14,19 +15,13 @@ export default function Home() {
     setIsError(false);
 
     try {
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
-        method: 'POST',
-        body: JSON.stringify({
-          title: title,
-          body: 'bar',
-          userId: 1,
-        }),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
+      const response = await axios.post('https://jsonplaceholder.typicode.com/posts', {
+        title,
+        body: 'bar',
+        userId: 1,
       });
 
-      if (!response.ok) {
+      if (response.status !== 200) {
         throw new Error('Network response was not ok');
       }
 
@@ -44,7 +39,6 @@ export default function Home() {
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="Enter title"
         />
         <button type="submit">Save</button>
       </form>
